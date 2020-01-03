@@ -66,7 +66,7 @@ class SlugifyModule extends Module {
         if (!\craft\helpers\ElementHelper::isDraftOrRevision($entry)) {
           // -- Update slug to match the title if updated --
           if (!empty($entry->id)){
-            if ($entry->type == 'banners') {
+            if (isset($entry->type) && $entry->type == 'banners') {
               $entry->slug = ($entry->title !== null) ? \craft\helpers\StringHelper::slugify('banner-'.$entry->title) : 'banner-'.$entry->slug;
             } else {
               $entry->slug = ($entry->title !== null) ? \craft\helpers\StringHelper::slugify($entry->title) : $entry->slug;
